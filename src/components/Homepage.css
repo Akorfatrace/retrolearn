@@ -22,19 +22,11 @@ body {
 }
 
 .header {
-  background: linear-gradient(135deg, #449da3, #e91e63, #e91e63);
+  background: linear-gradient(135deg, #35797e, #e91e63, #e91e63);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: #fff;
   padding: 20px 0;
-  position: relative; /* Added for positioning the cut */
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 40px),
-    75% 100%,
-    0 calc(100% - 40px)
-  ); /* Adjusted */
 }
 
 @keyframes gradientBG {
@@ -84,16 +76,23 @@ body {
 .hero-title {
   font-size: 3rem;
   margin-bottom: 20px;
-  color: #030303;
+  color: #fae9e9;
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
   margin-bottom: 40px;
 }
+.header {
+  background: linear-gradient(135deg, #b61380, #e94bb4, #e91e63, #e489c6);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  padding: 20px 0;
+}
 
 .gradient-text {
-  background: linear-gradient(135deg, #449da3, #e91e63, #e91e63);
+  background: linear-gradient(135deg, #e489c6, #e489c6, #e91e63, #e489c6);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -110,7 +109,7 @@ body {
 }
 
 .cta-button:hover {
-  background-color: #c2185b;
+  background-color: #50474b;
 }
 
 .section-title {
@@ -118,26 +117,11 @@ body {
   font-size: 2.5rem;
   margin-bottom: 40px;
 }
-
-.features-section {
-  background: linear-gradient(135deg, , #e91e63);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  color: #0e0d0d;
-  padding: 60px 0;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.feature-icon {
-  flex: 0 0 80px;
-  font-size: 2rem;
-  margin-right: 20px;
-  color: #e91e63;
+.full-width-image {
+  max-width: 100%; /* Ensure the image does not exceed its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Ensures the image behaves as a block element */
+  margin: 0 auto; /* Center the image horizontally */
 }
 
 .pricing-section {

@@ -1,0 +1,8 @@
+/* CustomNavbar.css */
+
+/* Change search button hover color */
+.btn-outline-success:hover {
+  color: #201f1f; /* Text color on hover */
+  background-color: #e489c6; /* Background color on hover */
+  border-color: #e489c6; /* Border color on hover */
+}
