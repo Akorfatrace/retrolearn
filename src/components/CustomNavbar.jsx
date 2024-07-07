@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./CustomNavbar.css";
 
 const CustomNavbar = () => {
@@ -8,80 +9,94 @@ const CustomNavbar = () => {
       style={{ backgroundColor: "#e4b9d5" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link to="/" className="navbar-brand">
           RetroLearn
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
+        </Link>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <Link to="/quiz/general-knowledge" className="nav-link">
+              General Knowledge
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/quiz/mythology" className="nav-link">
+              Mythology
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/quiz/history" className="nav-link">
+              History
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/quiz/science-nature" className="nav-link">
+              Science and Nature
+            </Link>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Entertainment
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <Link to="/quiz/books" className="dropdown-item">
+                  Books
+                </Link>
+              </li>
+              <li>
+                <Link to="/quiz/film" className="dropdown-item">
+                  Film
+                </Link>
+              </li>
+              <li>
+                <Link to="/quiz/music" className="dropdown-item">
+                  Music
+                </Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div className="nav-item dropdown">
+          <a
+            className="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Profile
+          </a>
+          <ul
+            className="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <a className="dropdown-item" href="#">
+                My Profile
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
+            <li>
+              <a className="dropdown-item" href="#">
+                Settings
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider"></hr>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+            <li>
+              <hr className="dropdown-divider" />
             </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
+            <li>
+              <a className="dropdown-item" href="#">
+                Logout
               </a>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>

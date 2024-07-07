@@ -6,3 +6,46 @@
   background-color: #e489c6; /* Background color on hover */
   border-color: #e489c6; /* Border color on hover */
 }
+
+/* Adjust search button size and icon */
+.btn-outline-success {
+  padding: 6px 8px; /* Adjust padding as needed */
+  font-size: 1rem; /* Adjust font size as needed */
+  border-color: transparent; /* Remove border color */
+}
+
+.btn-outline-success:focus,
+.btn-outline-success:active {
+  box-shadow: none; /* Remove focus and active box shadow */
+  border-color: transparent !important; /* Remove active border color */
+  background-color: #e489c6 !important; /* Background color on active */
+  color: #201f1f; /* Text color on active */
+}
+
+.btn-outline-success svg {
+  width: 1em; /* Adjust icon size as needed */
+  height: auto;
+  vertical-align: middle;
+  fill: #201f1f; /* Icon color */
+}
+
+/* Style for selected category */
+.selected-category {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.selected-category-label {
+  font-size: 0.9rem; /* Adjust font size as needed */
+  margin-right: 5px;
+  position: relative;
+}
+
+.selected-arrow {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+  fill: #201f1f; /* Arrow color */
+}

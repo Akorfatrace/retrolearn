@@ -1,0 +1,22 @@
+/* src/components/ResultPage.css */
+.result-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.result-page h2 {
+  font-size: 2rem;
+}
+
+.result-page p {
+  font-size: 1.5rem;
+}
+
+.result-page button {
+  background-color: #6a0572;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+}

@@ -7,8 +7,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #6a0572 0%, #b52c89 100%);
+  min-height: 120vh;
+  background: linear-gradient(135deg, #7a3a67, #b52c89);
 }
 
 .signup-content {
