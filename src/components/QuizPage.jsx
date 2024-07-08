@@ -1,46 +1,67 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-const Quiz = ({ category, difficulty }) => {
+const QuizPage = () => {
+  const [categories, setCategories] = useState([]);
   const [questions, setQuestions] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(`https://opentdb.com/api.php`, {
-          params: {
-            amount: 10,
-            category: category.id,
-            difficulty: difficulty,
-          },
-        });
-        setQuestions(response.data.results);
-      } catch (error) {
-        console.error("Error fetching questions:", error);
-      }
-    };
+    fetchCategories();
+  }, []);
 
-    fetchQuestions();
-  }, [category, difficulty]);
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchQuestions(selectedCategory);
+    }
+  }, [selectedCategory]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("https://opentdb.com/api_category.php"); // Replace with your categories API endpoint
+      const data = await response.json();
+      setCategories(data.categories);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  const fetchQuestions = async (category) => {
+    try {
+      const response = await fetch(
+        `https://opentdb.com/api.php?amount=10&category=${category}`
+      ); // Replace with your questions API endpoint
+      const data = await response.json();
+      setQuestions(data.questions);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+    }
+  };
 
   return (
     <div>
-      <h2>{category.name} Quiz</h2>
-      <ul>
-        {questions.map((question, index) => (
-          <li key={index}>
-            <p>{question.question}</p>
-            <ul>
-              {question.incorrect_answers.map((answer, i) => (
-                <li key={i}>{answer}</li>
-              ))}
-              <li>{question.correct_answer}</li>
-            </ul>
-          </li>
+      <h1>Quiz App</h1>
+      <select
+        onChange={(e) => setSelectedCategory(e.target.value)}
+        value={selectedCategory}
+      >
+        <option value="">Select Category</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
         ))}
-      </ul>
+      </select>
+      <div>
+        {questions.length > 0 && (
+          <ul>
+            {questions.map((question) => (
+              <li key={question.id}>{question.text}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
 
-export default Quiz;
+export default QuizPage;

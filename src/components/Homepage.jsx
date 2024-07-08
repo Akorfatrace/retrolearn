@@ -91,6 +91,7 @@ const Homepage = () => {
           </form>
         </div>
       </section>
+      {/* Footer section */}
       <footer className="footer">
         <div className="container">
           <div className="footer-logo">RetroLearn</div>
@@ -105,6 +106,10 @@ const Homepage = () => {
               <a href="#login">Login</a>
             </li>
           </ul>
+          <div className="divider"></div>
+          <p>
+            Join our community on <a href="#community">X</a>
+          </p>
           <p>
             &copy; {new Date().getFullYear()} RetroLearn. All rights reserved.
           </p>
