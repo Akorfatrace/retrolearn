@@ -1,24 +1,36 @@
-import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs"; // Importing BsSearch icon from react-icons/bs
-import { RiArrowDropDownLine } from "react-icons/ri"; // Importing RiArrowDropDownLine icon from react-icons/ri
+import React, { useState, useEffect } from "react";
+import { BsSearch } from "react-icons/bs";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import "./CustomNavbar.css";
 
 const CustomNavbar = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null); // State to manage selected category
-  const [userProfileOpen, setUserProfileOpen] = useState(false); // State to manage profile dropdown
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [userProfileOpen, setUserProfileOpen] = useState(false);
+  const [quizCategories, setQuizCategories] = useState([]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("https://opentdb.com/api_category.php");
+      const data = await response.json();
+      setQuizCategories(data.trivia_categories);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
 
   const handleCategorySelect = (category) => {
-    setSelectedCategory(category); // Update state with selected category
-    // Close profile dropdown when category selected
+    setSelectedCategory(category);
     setUserProfileOpen(false);
   };
 
   const toggleProfileDropdown = () => {
-    setUserProfileOpen(!userProfileOpen); // Toggle profile dropdown state
+    setUserProfileOpen(!userProfileOpen);
   };
-
-  // Dummy data for quiz categories
-  const quizCategories = [{ id: 1, name: "Take a quiz" }];
 
   return (
     <nav
@@ -26,9 +38,9 @@ const CustomNavbar = () => {
       style={{ backgroundColor: "#e4b9d5" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           RetroLearn
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -43,59 +55,61 @@ const CustomNavbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dashboard
-              </a>
+                Quizzes
+              </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <h6 className="dropdown-header">Quizzes</h6>
+                  <h6 className="dropdown-header">Quiz Categories</h6>
                 </li>
                 {quizCategories.map((category) => (
                   <li key={category.id}>
-                    <a
+                    <Link
                       className={`dropdown-item ${
                         selectedCategory === category.name ? "active" : ""
                       }`}
-                      href="#"
+                      to={`/quiz/${category.name
+                        .toLowerCase()
+                        .replace(" ", "-")}`}
                       onClick={() => handleCategorySelect(category.name)}
                     >
                       {category.name}
                       {selectedCategory === category.name && (
                         <RiArrowDropDownLine className="selected-arrow" />
                       )}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/results">
                     Scoreboard
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/favorites">
                     My RetroLearn Favorites
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/badges">
                 Badges
-              </a>
+              </Link>
             </li>
           </ul>
           <form className="d-flex me-3">
@@ -110,9 +124,9 @@ const CustomNavbar = () => {
             </button>
           </form>
           <div className="nav-item dropdown">
-            <a
+            <Link
               className="nav-link dropdown-toggle"
-              href="#"
+              to="#"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
@@ -120,7 +134,7 @@ const CustomNavbar = () => {
               onClick={toggleProfileDropdown}
             >
               Profile
-            </a>
+            </Link>
             <ul
               className={`dropdown-menu dropdown-menu-end ${
                 userProfileOpen ? "show" : ""
@@ -128,28 +142,27 @@ const CustomNavbar = () => {
               aria-labelledby="navbarDropdown"
             >
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/profile">
                   My Profile
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/settings">
                   Settings
-                </a>
+                </Link>
               </li>
               <li>
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/logout">
                   Logout
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      {/* Render the selected quiz category */}
       {selectedCategory && (
         <div className="selected-category">
           <span className="selected-category-label">{selectedCategory}</span>

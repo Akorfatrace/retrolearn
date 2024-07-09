@@ -11,16 +11,31 @@ const SignUp = ({ setUsers }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Check if passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
+    // Fetch users from local storage or initialize an empty array
     const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Add new user to users array
     users.push({ username, email, password });
+
+    // Update local storage with updated users array
     localStorage.setItem("users", JSON.stringify(users));
-    setUsers(users);
-    alert("SignUp Successful");
+
+    // Set users state (if setUsers prop is provided)
+    if (setUsers) {
+      setUsers(users);
+    }
+
+    // Alert successful signup
+    alert("Sign Up Successful");
+
+    // Navigate to login page
     navigate("/login");
   };
 

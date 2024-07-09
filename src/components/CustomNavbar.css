@@ -49,3 +49,10 @@
   transform: translateY(-50%);
   fill: #201f1f; /* Arrow color */
 }
+/* CustomNavbar.css */
+
+/* Dropdown menu scrollbar */
+.dropdown-menu {
+  max-height: 300px; /* Set maximum height for the dropdown menu */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

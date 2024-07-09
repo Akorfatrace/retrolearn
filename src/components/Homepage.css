@@ -134,28 +134,69 @@ body {
 
 .features-grid {
   display: flex;
-  justify-content: space-around;
-  gap: 40px;
-  margin-top: 40px;
+  justify-content: space-between;
+  gap: 20px; /* Adjust gap between cards */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  padding-bottom: 20px; /* Add padding to avoid clipping on horizontal scroll */
 }
 
 .feature-card {
+  flex: 0 0 auto; /* Prevent cards from growing */
+  width: 500px; /* Reduce width of each card */
+  height: 280px; /* Increase height of each card */
   background-color: #ffffff;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* Example hover effect: move card up slightly */
 }
 
 .feature-card h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem; /* Adjust heading font size */
+  margin-bottom: 15px; /* Adjust margin */
   color: #272525;
 }
 
 .feature-card p {
   font-size: 1.2rem;
   color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .feature-card {
+    width: calc(50% - 20px); /* Adjust width for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-card {
+    width: calc(100% - 20px); /* Adjust width for mobile */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
 }
 
 /* Pricing section styles */
@@ -194,52 +235,62 @@ body {
   margin-bottom: 10px;
 }
 
-/* Contact section styles */
-
-.contact-section {
-  background-color: #e0e0e0;
-  padding: 60px 0;
+.complaint-section {
+  background-color: #e489c6; /* Adjusted background color */
+  padding: 80px 0; /* Increased padding for better spacing */
   text-align: center;
 }
 
-.contact-form {
-  max-width: 600px;
+/* Complaint section styles */
+.complaint-section {
+  background-color: #e496ca; /* Adjusted background color */
+  padding: 50px 0; /* Increased padding for better spacing */
+  text-align: center;
+}
+
+.complaint-form {
+  max-width: 800px;
+  max-height: 600px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
+  background-color: #d68ebe; /* White background for form */
+  padding: 40px; /* Added padding for form */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(196, 96, 142, 0.1); /* Soft shadow */
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: calc(50% - 10px);
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.contact-form textarea {
+.complaint-form input,
+.complaint-form textarea {
   width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: #f1d2eb; /* Light gray background */
+}
+
+.complaint-form textarea {
   resize: vertical;
 }
 
-.contact-form button {
-  background-color: #e91e63;
+.complaint-form button {
+  background-color: #272525; /* Dark button color */
   color: #fff;
   border: none;
   padding: 15px 30px;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
-  background-color: #c2185b;
+.complaint-form button:hover {
+  background-color: #c7aac0; /* Darker hover color */
 }
 
-/* Footer styles */
 .footer {
   background-color: #463f44;
   color: #fff;

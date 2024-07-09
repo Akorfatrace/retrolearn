@@ -1,27 +1,159 @@
-/* src/components/QuizPage.css */
-.quiz-page {
-  text-align: center;
+/* Container for the entire quiz */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #7a3a67, #b52c89);
+  min-height: 100vh; /* Ensure the background covers the entire viewport height */
+}
+
+/* Container for the quiz content */
+.quiz-container {
+  max-width: 800px;
+  margin: 40px auto;
   padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.question-section {
+/* Header section for the quiz title */
+.quiz-header {
+  text-align: center;
   margin-bottom: 20px;
+  color: #333;
 }
 
-.question-count {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+/* Styling for the question text */
+.quiz-question {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  color: #444;
+  text-align: center;
 }
 
-.question-text {
-  font-size: 1.5rem;
+/* List of answer options */
+.quiz-answers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.answer-section button {
-  background-color: #6a0572;
-  color: #fff;
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
+/* Individual answer option */
+.quiz-answers li {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the answer labels */
+.quiz-answers label {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.quiz-answers input[type="radio"] {
+  display: none;
+}
+
+/* Styling for the selected answer */
+.quiz-answers input[type="radio"]:checked + label {
+  background-color: #d1e7fd;
+  border-color: #8ebbf0;
+  transform: scale(1.05);
+}
+
+/* Quiz controls styling */
+.quiz-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Styling for quiz buttons */
+.quiz-button {
+  width: calc(50% - 10px); /* Adjust width to fit buttons side by side */
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #441947; /* Same color for both buttons */
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.quiz-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.quiz-button:hover:not(:disabled) {
+  background-color: #e48bce;
+  transform: scale(1.05);
+}
+
+/* Keyframe animation for smooth fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Quiz completion message */
+.quiz-complete {
+  text-align: center;
+}
+
+.quiz-complete h2 {
+  font-size: 2em;
+  color: #007bff;
+}
+
+.quiz-complete p {
+  font-size: 1.2em;
+  color: #333;
+}
+/* Styling for the answer labels */
+.quiz-answers li {
+  list-style: none; /* Remove default list style */
+  margin-bottom: 10px; /* Add margin between answers */
+}
+
+.quiz-answers label {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Styling for the selected answer */
+.quiz-answers .selected label {
+  background-color: #d1e7fd; /* Your chosen highlight color */
+  border-color: #8ebbf0; /* Optional: Adjust border color */
 }

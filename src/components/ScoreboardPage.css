@@ -1,0 +1,60 @@
+/* ScoreboardPage.css */
+
+.scoreboard-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #b687a8;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 70px;
+}
+
+.scoreboard-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #42092c;
+}
+
+.scoreboard-page p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.quiz-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quiz-result {
+  width: 300px;
+  margin: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.quiz-result p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.btn-danger {
+  background-color: #811a4a;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
